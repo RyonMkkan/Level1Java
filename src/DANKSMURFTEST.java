@@ -4,6 +4,7 @@ public class DANKSMURFTEST {
 		DankSmurf joon = new DankSmurf("XXX_MLGFOURTWENTYQUICKSCOPERDANKSMURFTHESITYNINTH_XXX");
 	String dank =	joon.getName();
 	System.out.println(dank);
+	joon.eat();
 	}
 
 	
