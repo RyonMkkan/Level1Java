@@ -37,7 +37,7 @@ class Human {
 
 /**
  * Robot Class
- */
+ *
 class Robot {
 	boolean isEvil;
 	String name;
@@ -56,4 +56,4 @@ class Robot {
 			System.out.println("No!! The robot " + name + " loves " +man.getName());
 		}
 	}
-}
+}*/
