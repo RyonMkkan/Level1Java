@@ -4,10 +4,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 public class GamePanel extends JPanel implements ActionListener{
-Timer time;
+int time;
 
 
 GamePanel(){
+	time  = 1000/60;
+	ActionListener.this
+	
 	
 	
 	
