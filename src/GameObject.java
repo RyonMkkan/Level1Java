@@ -6,17 +6,20 @@ public class GameObject {
 	int width;
 	int height;
 	
-	GameObject(){
+	GameObject(int x,int y,int width,int height){
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+				
+		
 		
 	}
 	 void update(){
-		 x =x+10;
-		 y=y+10;
-		 
+		
 	 }
 	void draw(Graphics g){
-		g.fillRect(10, 10, 100, 100);
-		System.out.println("TO");
+	
 		
 		
 	}

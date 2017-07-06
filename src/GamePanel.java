@@ -16,6 +16,7 @@ final int GAME_STATE = 1;
 final int END_STATE = 2;
 int currentState = MENU_STATE;
 Font  titleFont;
+Rocketship ship= new  Rocketship(250,700,50,50);
 
 GamePanel(){
 	System.out.println("I");
@@ -23,7 +24,18 @@ GamePanel(){
 	titleFont= new Font("Arial",Font.PLAIN,48);
 	
 }
+void keyPressed(){
+	
+	 }
 
+	
+}
+
+	
+void keyReleased(){
+	
+	
+}
 	
 
 void startGame(){
@@ -39,15 +51,15 @@ public void paintComponent(Graphics g){
 		DrawEndState(g);
 	}
 
-	//
-	//
+	
+	
 	
 }
 void updateMenuState(){
 	
 }
 void updateGameState(){
-	
+	ship.update();
 }
 void updateEndState(){
 	
@@ -60,6 +72,7 @@ void DrawMenuState(Graphics g){
 	g.setFont(titleFont); 
 	g.drawString("League Invaders ", 50,200);
 	g.drawString("press ENTER to play ", 25,400);
+	
 
 }
 void DrawGameState(Graphics g){
@@ -68,6 +81,7 @@ void DrawGameState(Graphics g){
 	g.setColor(Color.BLACK);
 	g.setFont(titleFont); 
 	g.drawString("LOL", 200,200);
+	ship.draw(g);
 
 }
 void DrawEndState(Graphics g){
@@ -113,6 +127,24 @@ public void keyPressed(KeyEvent e) {
 		currentState = MENU_STATE;
 	
 	}
+	if(keypressed ==up);{
+		up= true;
+	}
+	 else if(keyCode == DOWN)
+     {
+       down = true;
+       
+     }
+     else if(keyCode == RIGHT)
+     {
+       right = true;
+     
+     }
+     else if(keyCode == LEFT)
+     {
+       left = true;
+     }  
+
 
 }
 @Override
