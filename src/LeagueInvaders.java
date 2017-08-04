@@ -12,6 +12,7 @@ public static void main(String[] args) {
 	LeagueInvaders window = new LeagueInvaders();
 		
 		
+	
 }
 
 LeagueInvaders(){
