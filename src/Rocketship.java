@@ -15,7 +15,6 @@ public class Rocketship extends GameObject {
 	void update() {
 
 		if (right) {
-			System.out.println(x + " " + y);
 			x = x + 5;
 		}
 		if (left) {
