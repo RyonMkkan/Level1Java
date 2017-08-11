@@ -17,6 +17,7 @@ public static void main(String[] args) {
 
 LeagueInvaders(){
 	GamePaneel = new GamePanel();
+	
 	setup();	
 	
 	
