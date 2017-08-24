@@ -4,8 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.Timer;
 
 public class LeagueInvaders {
-	int width=500;
-	int height=800;
+	static int width=500;
+	static int height=800;
 	JFrame frame = new JFrame();
 	GamePanel GamePaneel;
 public static void main(String[] args) {

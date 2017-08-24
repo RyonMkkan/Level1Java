@@ -62,6 +62,7 @@ ObjectManager ObjectManageer;
 	void updateGameState() {
 		ObjectManageer.update();
 		ObjectManageer.manageEnemies();
+		ObjectManageer.checkCollision();
 	}
 
 	void updateEndState() {
@@ -86,6 +87,7 @@ ObjectManager ObjectManageer;
 		g.setFont(titleFont);
 		g.drawString("LOL", 200, 200);
 		ObjectManageer.draw(g);
+		ObjectManageer.manageEnemies();
 
 	}
 
