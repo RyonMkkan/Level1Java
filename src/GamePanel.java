@@ -17,13 +17,17 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	final int END_STATE = 2;
 	int currentState = MENU_STATE;
 	Font titleFont;
+	String score1;
+	
 	Rocketship ship = new Rocketship(250, 700, 50, 50, 9);
+	
 ObjectManager ObjectManageer;
 
 	GamePanel() {
 		System.out.println("I");
 		time = new Timer(1000 / 60, this);
 		titleFont = new Font("Arial", Font.PLAIN, 48);
+		
 		ObjectManageer = new ObjectManager();
 		ObjectManageer.addObject(ship); 
 		
@@ -63,6 +67,16 @@ ObjectManager ObjectManageer;
 		ObjectManageer.update();
 		ObjectManageer.manageEnemies();
 		ObjectManageer.checkCollision();
+		if (ship.isAlive==false) {
+			currentState=END_STATE;
+			 ObjectManageer.reset();
+			 ship = new Rocketship(250, 700, 50, 50, 9);
+			 ObjectManageer.addObject(ship);
+			 ObjectManageer.setScore(0);
+	
+		} 
+		int scoree = ObjectManageer.getScore();
+		score1 = String.valueOf(scoree);
 	}
 
 	void updateEndState() {
@@ -83,11 +97,12 @@ ObjectManager ObjectManageer;
 	void DrawGameState(Graphics g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, 500, 800);
-		g.setColor(Color.BLACK);
+		g.setColor(Color.CYAN);
 		g.setFont(titleFont);
-		g.drawString("LOL", 200, 200);
+		g.drawString("Score:"+ ObjectManageer.getScore(), LeagueInvaders.width-195,50 );
 		ObjectManageer.draw(g);
 		ObjectManageer.manageEnemies();
+		
 
 	}
 

@@ -30,6 +30,7 @@ LeagueInvaders(){
 	 frame.setSize(width, height);
 	 GamePaneel.startGame();
 	 
+	 
  }
 }
  
