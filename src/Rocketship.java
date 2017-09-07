@@ -5,6 +5,8 @@ public class Rocketship extends GameObject {
 
 	boolean left = false;
 	boolean right = false;
+	boolean up = false;
+	boolean down = false;
 	int speed;
 
 	Rocketship(int x, int y, int width, int height,int spd) {
@@ -15,19 +17,25 @@ public class Rocketship extends GameObject {
 	void update() {
 		super.update();
 		if (right) {
-			x = x + 5;
+			x = x + 10;
 		}
 		if (left) {
-			x = x - 5;
+			x = x - 10;
+		}
+		if (up) {
+			y = y - 10;
+		}
+		if (down) {
+			y = y + 10;
 		}
 
 	}
 
 	void draw(Graphics g) {
 		
-		g.setColor(Color.BLUE);
-		g.fillRect(x, y, 80, 80);
+		g.drawImage(GamePanel.rocketImg, x, y, width, height, null);
 
+		
 	}
 
 }

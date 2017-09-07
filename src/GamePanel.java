@@ -5,7 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -15,9 +18,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	final int MENU_STATE = 0;
 	final int GAME_STATE = 1;
 	final int END_STATE = 2;
+	public static BufferedImage alienImg;
+	public static BufferedImage rocketImg;
+	public static BufferedImage bulletImg;
+	public static BufferedImage spaceImg;
 	int currentState = MENU_STATE;
 	Font titleFont;
 	String score1;
+	
+
 	
 	Rocketship ship = new Rocketship(250, 700, 50, 50, 9);
 	
@@ -30,6 +39,17 @@ ObjectManager ObjectManageer;
 		
 		ObjectManageer = new ObjectManager();
 		ObjectManageer.addObject(ship); 
+		try {
+			alienImg = ImageIO.read(this.getClass().getResourceAsStream("alien.png"));
+			rocketImg = ImageIO.read(this.getClass().getResourceAsStream("rocket.png"));
+			bulletImg = ImageIO.read(this.getClass().getResourceAsStream("bullet.png"));
+			spaceImg = ImageIO.read(this.getClass().getResourceAsStream("space.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("one of the images is missing");
+		System.exit(0);
+		}
+
 		
 
 
@@ -95,8 +115,7 @@ ObjectManager ObjectManageer;
 	}
 
 	void DrawGameState(Graphics g) {
-		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, 500, 800);
+		g.drawImage(GamePanel.spaceImg, 0, 0, LeagueInvaders.width, LeagueInvaders.height, null);
 		g.setColor(Color.CYAN);
 		g.setFont(titleFont);
 		g.drawString("Score:"+ ObjectManageer.getScore(), LeagueInvaders.width-195,50 );
@@ -151,9 +170,20 @@ ObjectManager ObjectManageer;
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			ship.right = true;
 		}
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
+			ship.up = true;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+			ship.down = true;
+		}
+
 		if (e.getKeyCode() == KeyEvent.VK_SPACE){
 			
+			ObjectManageer.addObject(new Projectile(ship.x + 30, ship.y+50, 10, 10));
+			ObjectManageer.addObject(new Projectile(ship.x + 10, ship.y+50, 10, 10));
 			ObjectManageer.addObject(new Projectile(ship.x + 30, ship.y, 10, 10));
+			ObjectManageer.addObject(new Projectile(ship.x + 10, ship.y, 10, 10));
+			
 
 		}
 		
@@ -170,6 +200,13 @@ ObjectManager ObjectManageer;
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			ship.right = false;
 		}
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
+			ship.up = false;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+			ship.down = false;
+		}
+
 	}
 
 }
